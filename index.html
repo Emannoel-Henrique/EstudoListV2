@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EsToDoList</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .concluida .tarefa-texto {
+            text-decoration: line-through;
+            color: #9ca3af;
+        }
+        /* Melhor feedback visual */
+        .tarefa-item {
+            transition: all 0.2s ease;
+        }
+        .tarefa-item:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="flex justify-center items-start pt-12 min-h-screen bg-gray-100">
+    <div class="w-full max-w-sm lg:max-w-lg p-6 bg-white border border-gray-300 rounded-lg shadow-xl">
+        <h1 class="text-3xl font-bold text-center mb-6 text-green-600">
+            EsToDoList
+        </h1>
+
+        <form id="form-tarefa" class="flex mb-6 space-x-2">
+            <input
+                type="text"
+                id="nova-tarefa-input"
+                placeholder="Digite uma tarefa..."
+                class="flex-grow p-3 border border-gray-400 rounded-lg text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500"
+                maxlength="100"
+            />
+            <button
+                type="submit"
+                id="adicionar-btn"
+                class="flex items-center justify-center flex-shrink-0 w-12 h-12 bg-green-500 hover:bg-green-600 text-white text-2xl font-bold rounded-lg transition duration-150 ease-in-out shadow-md"
+            >+
+            </button>
+        </form>
+
+        <p id="contador-tarefas" class="text-sm text-gray-600 mb-2 text-center"></p>
+
+        <ul id="lista-de-tarefas" class="space-y-3"></ul>
+
+        <hr class="my-6 border-gray-300" />
+
+        <div class="flex items-center space-x-3">
+            <div class="relative flex-grow">
+                <input
+                    type="text"
+                    id="pesquisa-input"
+                    placeholder="Pesquise..."
+                    class="w-full p-3 pl-10 border border-gray-400 rounded-lg text-gray-700 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+                <span class="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500">🔍</span>
+            </div>
+
+            <select
+                id="filtro-select"
+                class="p-3 border border-gray-400 rounded-lg bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            >
+                <option value="todos">Todos</option>
+                <option value="ativos">Ativos</option>
+                <option value="concluidos">Concluídos</option>
+            </select>
+        </div>
+
+        <button 
+            id="limpar-concluidas-btn"
+            class="w-full mt-4 p-3 bg-red-500 hover:bg-red-600 text-white rounded-lg transition duration-150 ease-in-out shadow-md"
+        >
+            Limpar Tarefas Concluídas
+        </button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
